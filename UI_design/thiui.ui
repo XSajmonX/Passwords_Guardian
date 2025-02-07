@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>user_Dialog</class>
+ <widget class="QDialog" name="user_Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>767</width>
+    <height>577</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Passwords Guardian - User Creator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>padlock.ico</normaloff>padlock.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(132, 0, 193, 255), stop:1 rgba(0, 204, 97, 255));
+}
+QFrame{
+	background-color: rgb(6, 231, 255);
+}
+QPushButton:hover{
+	background-color: rgb(206, 34, 34);
+}
+QPushButton:pressed{
+	background-color: rgb(1, 35, 255);
+}
+QPushButton{
+	background-color: rgb(255, 107, 102);
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
+  </property>
+  <widget class="QFrame" name="user_frame">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>230</y>
+     <width>471</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame#user_frame{
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>20</y>
+      <width>261</width>
+      <height>139</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="user_verticalLayout_3">
+     <item>
+      <widget class="QLineEdit" name="user_lineEdit">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="user_lineEdit_2">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="user_lineEdit_3">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>162</width>
+      <height>139</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="user_verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="user_label1">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Main Password:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="user_label_2">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Repeat Password:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="user_label_3">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Email:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="user_add">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>180</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Add User</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="user_frame_3">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>60</y>
+     <width>581</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	border: 2px solid black;
+	border-radius: 5px;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
