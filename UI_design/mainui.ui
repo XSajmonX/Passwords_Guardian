@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Password Guardian</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>padlock.ico</normaloff>padlock.ico</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
 	background-color: rgb(187, 250, 255);
@@ -36,9 +40,9 @@ QPushButton{
    <widget class="QPushButton" name="mailbutt">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>160</x>
       <y>240</y>
-      <width>411</width>
+      <width>491</width>
       <height>51</height>
      </rect>
     </property>
@@ -66,7 +70,7 @@ QPushButton{
    <widget class="QPushButton" name="submit">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>410</x>
       <y>490</y>
       <width>241</width>
       <height>61</height>
@@ -170,7 +174,7 @@ QPushButton{
      <rect>
       <x>160</x>
       <y>310</y>
-      <width>451</width>
+      <width>491</width>
       <height>161</height>
      </rect>
     </property>
@@ -323,6 +327,27 @@ QLineEdit{
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="create_user">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>490</y>
+      <width>241</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Create New User</string>
+    </property>
    </widget>
   </widget>
  </widget>
