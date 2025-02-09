@@ -37,41 +37,11 @@ QPushButton{
 }
 </string>
    </property>
-   <widget class="QPushButton" name="mailbutt">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>240</y>
-      <width>491</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times New Roman</family>
-      <pointsize>14</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>Send code on e-mail</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QPushButton" name="submit">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>490</y>
+      <x>430</x>
+      <y>470</y>
       <width>241</width>
       <height>61</height>
      </rect>
@@ -172,9 +142,9 @@ QPushButton{
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>310</y>
-      <width>491</width>
+      <x>110</x>
+      <y>250</y>
+      <width>591</width>
       <height>161</height>
      </rect>
     </property>
@@ -198,9 +168,9 @@ QLineEdit{
     <widget class="QWidget" name="verticalLayoutWidget_3">
      <property name="geometry">
       <rect>
-       <x>150</x>
+       <x>200</x>
        <y>10</y>
-       <width>281</width>
+       <width>371</width>
        <height>131</height>
       </rect>
      </property>
@@ -246,25 +216,6 @@ QLineEdit{
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_mail">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Times New Roman</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
     <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -272,7 +223,7 @@ QLineEdit{
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>131</width>
+       <width>181</width>
        <height>131</height>
       </rect>
      </property>
@@ -309,30 +260,14 @@ QLineEdit{
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLabel" name="label_mail">
-        <property name="font">
-         <font>
-          <family>Times New Roman</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>mail code:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </widget>
    <widget class="QPushButton" name="create_user">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>490</y>
+      <x>130</x>
+      <y>470</y>
       <width>241</width>
       <height>61</height>
      </rect>

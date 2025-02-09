@@ -63,7 +63,7 @@ QPushButton{
       <x>190</x>
       <y>20</y>
       <width>261</width>
-      <height>139</height>
+      <height>151</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="user_verticalLayout_3">
@@ -90,7 +90,7 @@ QPushButton{
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="user_lineEdit_2">
+      <widget class="QLineEdit" name="user_lineEdit1">
        <property name="font">
         <font>
          <family>Times New Roman</family>
@@ -112,7 +112,29 @@ QPushButton{
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="user_lineEdit_3">
+      <widget class="QLineEdit" name="user_lineEdit2">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="user_lineEdit3">
        <property name="font">
         <font>
          <family>Times New Roman</family>
@@ -138,10 +160,25 @@ QPushButton{
       <x>20</x>
       <y>20</y>
       <width>162</width>
-      <height>139</height>
+      <height>151</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="user_verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="user_label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Login:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QLabel" name="user_label1">
        <property name="font">
@@ -151,6 +188,9 @@ QPushButton{
        </property>
        <property name="text">
         <string>Main Password:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -164,6 +204,9 @@ QPushButton{
        <property name="text">
         <string>Repeat Password:</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
      </item>
      <item>
@@ -175,6 +218,9 @@ QPushButton{
        </property>
        <property name="text">
         <string>Email:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
