@@ -13,17 +13,105 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QPushButton" name="mailbutt">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>220</y>
-     <width>55</width>
-     <height>16</height>
+     <x>130</x>
+     <y>90</y>
+     <width>491</width>
+     <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>New win</string>
+    <string>Send code on e-mail</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_mail">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>320</y>
+     <width>129</width>
+     <height>39</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>mail code:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_mail">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>320</y>
+     <width>279</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="enter">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>430</y>
+     <width>241</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Enter</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
    </property>
   </widget>
  </widget>
