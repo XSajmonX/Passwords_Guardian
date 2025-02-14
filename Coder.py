@@ -32,7 +32,7 @@ def add_redundancy(x):
         r = random.randint(0,15)
         text+=dic[r] # add random characters
 
-    print("Length of strings, front/back: "+str(front)+"/"+str(back))
+    #print("Length of strings, front/back: "+str(front)+"/"+str(back))
     return text
 
 # create blocks of cryptogram

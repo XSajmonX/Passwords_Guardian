@@ -1,7 +1,7 @@
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import *
-from os import write
-from Coder_Decoder_users import crypt, read_file
+from File_operations import crypt, read_users_file
+from Generator import generate_unique_id, gen_with_length
 
 
 class third_win(QDialog):
@@ -28,18 +28,30 @@ class third_win(QDialog):
 
 
     def add_user(self):
+
+        #print(users_list)
         # Pobranie danych z QLineEdit
         login_text = self.login.text()
         password_text = self.user_pass.text()
         password_rep_text = self.user_pass_rep.text()
         email = self.email.text()
 
+
         # Weryfikacja podanych danych
         if password_text == password_rep_text:
             print('Pass ok')
+        try:
+            user_id = generate_unique_id()
+            users_list = read_users_file()
+            for user in users_list:
+                if login_text == user.login and password_text == user.password:
+                    return print("Uzytkownik o takich danych istnieje")
+        except FileNotFoundError:
+            user_id = gen_with_length(10)
+            print("brak pliku")
 
         # Zapisanie danych nowego uzytkownika do pliku + szyfrowanie AES
-        encrypt = crypt(login_text,password_text,email)
+        encrypt = crypt(user_id,login_text,password_text,email)
         save = open("Users.csv",'a')
         save.write(encrypt)
         save.close()

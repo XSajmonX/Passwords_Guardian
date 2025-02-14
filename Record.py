@@ -1,5 +1,5 @@
 class Record():
-    def __init__(self,serv,email,password):
+    def __init__(self,serv,login,password):
         self.serv = serv
-        self.email = email
+        self.login = login
         self.password = password
