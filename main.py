@@ -1,9 +1,10 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
+import Mail
 import Second_Window
 import sys
 import Third_Window
-from Coder_Decoder_users import read_file
+from File_operations import read_users_file
 
 
 class MainWindow(QMainWindow):
@@ -35,22 +36,34 @@ class MainWindow(QMainWindow):
         self.usr_create_window.show()
 
     def check(self):
-        read_file()
-
+        users_list = read_users_file()
         # Pobranie danych
         login_text = self.edit_login.text()
         password_text = self.edit_pass.text()
-        '''
-        print("Login:", login_text)
-        print("Hasło:", password_text)
-        '''
+
         # Weryfikacja danych logujacego sie użytkownika
+        for user in users_list:
+            if login_text == user.login and password_text == user.password:
+                print("weryfikacja poprawna")
 
+                print("Id:", user.id)
+                print("Login:", user.login)
+                print("Hasło:", user.password)
+                print("Mail:", user.email)
 
-        # Otworzenie okna do weryfikacji email
-        #self.second_window = Second_Window.second_win()
-       # self.second_window.exec_()
+                # wysłanie maila z kodem do weryfikacji
+                #Mail.new_mail(user.email)
+                # Otworzenie okna do weryfikacji email
+                self.second_window = Second_Window.second_win(user,self)
 
+                self.edit_login.setText("")
+                self.edit_pass.setText("")
+
+                self.hide()
+                self.second_window.exec_()
+
+            else:
+                continue
 
 def window():
     app = QApplication(sys.argv)
