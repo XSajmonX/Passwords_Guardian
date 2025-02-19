@@ -1,9 +1,9 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import Mail
-import Second_Window
+from new_user import create_user_win
 import sys
-import Third_Window
+from verify import verify_win
 from File_operations import read_users_file
 
 
@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        uic.loadUi("UI_design/mainui.ui", self) # Inicjalizacjia graficznego interfejsu
+        uic.loadUi("UI_design/main_win.ui", self) # Inicjalizacjia graficznego interfejsu
 
         # Pobranie pól tekstowych (QLineEdit)
         self.edit_login = self.findChild(QtWidgets.QLineEdit, 'lineEdit_login')
@@ -32,14 +32,18 @@ class MainWindow(QMainWindow):
 
     def create(self):
         # Otworzenie okna do tworzenia nowych użytkowników
-        self.usr_create_window = Third_Window.third_win()
-        self.usr_create_window.show()
+        self.usr_create_window = create_user_win()
+        self.usr_create_window.exec_()
 
     def check(self):
         users_list = read_users_file()
         # Pobranie danych
         login_text = self.edit_login.text()
         password_text = self.edit_pass.text()
+
+        if login_text.strip() == '' or password_text.strip() == '':
+            print("empty field - login")
+            return
 
         # Weryfikacja danych logujacego sie użytkownika
         for user in users_list:
@@ -54,13 +58,13 @@ class MainWindow(QMainWindow):
                 # wysłanie maila z kodem do weryfikacji
                 #Mail.new_mail(user.email)
                 # Otworzenie okna do weryfikacji email
-                self.second_window = Second_Window.second_win(user,self)
+                self.verify_window = verify_win(user,self)
 
                 self.edit_login.setText("")
                 self.edit_pass.setText("")
 
                 self.hide()
-                self.second_window.exec_()
+                self.verify_window.exec_()
 
             else:
                 continue

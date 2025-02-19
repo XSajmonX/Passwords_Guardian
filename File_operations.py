@@ -59,6 +59,5 @@ def encrypt_record(serv,log,pas):
     val0 = encrypt(serv)
     val1 = encrypt(log)
     val2 = encrypt(pas)
-    print("4")
     res = '{},{},{},0\n'.format(val0,val1,val2)
     return res

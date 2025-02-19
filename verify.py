@@ -1,11 +1,11 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import *
-import Fourth_Window
+from password_tab import password_manager_win
 import Generator
 import Mail
 
 
-class second_win(QDialog):
+class verify_win(QDialog):
     def __init__(self,user,main_window):
         super().__init__()
         self.main_win = main_window
@@ -15,7 +15,7 @@ class second_win(QDialog):
         self.initUI()
 
     def initUI(self):
-        uic.loadUi("UI_design/secui.ui", self) # Inicjalizacjia graficznego interfejsu
+        uic.loadUi("UI_design/verify_win.ui", self) # Inicjalizacjia graficznego interfejsu
         # Pobranie pól tekstowych (QLineEdit)
         self.edit_login = self.findChild(QtWidgets.QLineEdit, 'lineEdit_mail')
 
@@ -29,10 +29,14 @@ class second_win(QDialog):
 
     def check_code(self):
         eline = self.edit_login.text()
+        if eline.strip() == '':
+            print("empty verify code")
+            return
+
         if eline == self.val:
             print("kod jest ok")
 
-            self.add_rec_window = Fourth_Window.fourth_win(self.user,self.main_win)
+            self.add_rec_window = password_manager_win(self.user,self.main_win)
             self.close()
             self.add_rec_window.exec_()
 
