@@ -4,14 +4,14 @@ from File_operations import crypt, read_users_file
 from Generator import generate_unique_id, gen_with_length
 
 
-class third_win(QDialog):
+class create_user_win(QDialog):
     def __init__(self):
         super().__init__()
         self.user_list = []
         self.initUI()
 
     def initUI(self):
-        uic.loadUi("UI_design/thiui.ui", self) # Inicjalizacjia graficznego interfejsu
+        uic.loadUi("UI_design/add_user_win.ui", self) # Inicjalizacjia graficznego interfejsu
 
         # Pobranie pól tekstowych (QLineEdit)
         self.login = self.findChild(QtWidgets.QLineEdit, 'user_lineEdit')
@@ -36,10 +36,17 @@ class third_win(QDialog):
         password_rep_text = self.user_pass_rep.text()
         email = self.email.text()
 
+        if password_text.strip() == '' or password_rep_text.strip() == '' or login_text.strip() == '' or email.strip() == '':
+            print("empty field - add user")
+            return
 
         # Weryfikacja podanych danych
         if password_text == password_rep_text:
             print('Pass ok')
+        else:
+            print("Pass1 not equal Pass2")
+            return
+
         try:
             user_id = generate_unique_id()
             users_list = read_users_file()

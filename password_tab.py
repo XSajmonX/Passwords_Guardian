@@ -4,9 +4,9 @@ from PyQt5.QtWidgets import *
 from File_operations import read_records
 from PyQt5.QtCore import Qt
 from Record import Record
+from modify import modify_win
 
-
-class fourth_win(QDialog):
+class password_manager_win(QDialog):
     def __init__(self,user,main_window):
         super().__init__()
         self.main_win = main_window
@@ -22,7 +22,7 @@ class fourth_win(QDialog):
             self.initUI()
 
     def initUI(self):
-        uic.loadUi("UI_design/fourui.ui", self) # Inicjalizacjia graficznego interfejsu
+        uic.loadUi("UI_design/pass_win.ui", self) # Inicjalizacjia graficznego interfejsu
         # Pobranie pól tekstowych (QLineEdit)
         self.new_serv = self.findChild(QtWidgets.QLineEdit, 'new_service')
         self.new_login = self.findChild(QtWidgets.QLineEdit, 'new_login')
@@ -30,9 +30,14 @@ class fourth_win(QDialog):
 
         self.new_record = self.findChild(QtWidgets.QPushButton, 'add_record')
         self.logoutButt = self.findChild(QtWidgets.QPushButton,'logout')
+        self.Delete = self.findChild(QtWidgets.QPushButton, 'Delete')
+        self.modify = self.findChild(QtWidgets.QPushButton, 'modify')
 
         self.new_record.clicked.connect(self.add_new_record)
         self.logoutButt.clicked.connect(self.log_out)
+        self.Delete.clicked.connect(self.delete_selected_record)
+        self.modify.clicked.connect(self.modify_record)
+
 
         self.table = self.findChild(QTableWidget, 'tableWidget')
         self.populate_table()
@@ -40,7 +45,7 @@ class fourth_win(QDialog):
     def populate_table(self):
         self.table.setColumnCount(4)
         self.table.setRowCount(len(self.services))
-        self.table.setHorizontalHeaderLabels(["Usługa", "Login", "Hasło", "Akcje"])
+        self.table.setHorizontalHeaderLabels(["Service", "Login", "Password", "Action"])
         """ Wstawia dane do tabeli """
         for row, service in enumerate(self.services):
 
@@ -112,10 +117,18 @@ class fourth_win(QDialog):
         log = self.new_login.text()
         pas = self.new_pass.text()
 
+        if serv.strip() == "" or log.strip() == "" or pas.strip() == "":
+            print("empty add new pass field")
+            return
+
         encrypt_rec = encrypt_record(serv,log,pas)
         wr = open("Pass/{}.csv".format(self.user.id),'a')
         wr.write(encrypt_rec)
         wr.close()
+
+        self.new_serv.setText("")
+        self.new_login.setText("")
+        self.new_pass.setText("")
 
         self.services.insert(0,Record(serv,log,pas))
         self.table.clear()
@@ -125,3 +138,22 @@ class fourth_win(QDialog):
         self.close()
         self.main_win.show()
 
+    def delete_selected_record(self):
+        selected_row = self.table.currentRow()  # Pobierz zaznaczony wiersz
+        if selected_row >= 0:  # Sprawdź, czy coś jest zaznaczone
+            del self.services[selected_row]  # Usuń z listy
+            self.table.removeRow(selected_row)  # Usuń z tabeli
+
+        wr = open("Pass/{}.csv".format(self.user.id),'w')
+        for record in self.services:
+            encrypt_rec = encrypt_record(record.serv,record.login,record.password)
+            wr.write(encrypt_rec)
+        wr.close()
+
+    def modify_record(self):
+        selected_row = self.table.currentRow()  # Pobierz zaznaczony wiersz
+        if selected_row >= 0:
+            record = self.services[selected_row]
+
+            self.mod = modify_win(self.user,self.table,record,self.services,selected_row,self.populate_table)
+            self.mod.exec_()

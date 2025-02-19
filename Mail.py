@@ -16,4 +16,4 @@ def new_mail(reciver,code):
     server.sendmail(sender_email, receiver_email, msg.as_string())
     server.quit()
 
-    print("✅ E-mail wysłany!")
+    print("E-mail wysłany!")
