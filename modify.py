@@ -1,9 +1,6 @@
 from File_operations import encrypt_record
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import *
-from File_operations import read_records
-from PyQt5.QtCore import Qt
-from Record import Record
 
 
 class modify_win(QDialog):

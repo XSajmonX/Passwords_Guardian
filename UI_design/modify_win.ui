@@ -11,16 +11,36 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Guardian Passwords - Modify</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>padlock.ico</normaloff>padlock.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog#Dialog{
+	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(132, 0, 193, 255), stop:1 rgba(0, 204, 97, 255));
+}</string>
   </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>50</y>
+     <x>40</x>
+     <y>30</y>
      <width>331</width>
-     <height>171</height>
+     <height>241</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame#frame{
+	background-color: rgb(255, 149, 151);
+	border: 2px solid black;
+	border-radius: 5px;
+}
+QLineEdit{
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -31,57 +51,91 @@
    <widget class="QLineEdit" name="serv">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>10</y>
-      <width>113</width>
-      <height>22</height>
+      <x>150</x>
+      <y>20</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="log">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>113</width>
-      <height>22</height>
+      <x>150</x>
+      <y>70</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="pass">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>80</y>
-      <width>113</width>
-      <height>22</height>
+      <x>150</x>
+      <y>120</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>55</width>
-      <height>16</height>
+      <x>40</x>
+      <y>20</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>Service</string>
+     <string>Service:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>40</y>
-      <width>55</width>
-      <height>16</height>
+      <x>40</x>
+      <y>70</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Login:</string>
@@ -90,11 +144,16 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>71</width>
-      <height>21</height>
+      <x>40</x>
+      <y>120</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Password:</string>
@@ -103,14 +162,34 @@
    <widget class="QPushButton" name="modify_butt">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>130</y>
-      <width>93</width>
-      <height>28</height>
+      <x>190</x>
+      <y>180</y>
+      <width>111</width>
+      <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton:hover{
+	background-color: rgb(206, 34, 34);
+}
+QPushButton:pressed{
+	background-color: rgb(1, 35, 255);
+}
+QPushButton{
+	background-color: rgb(255, 107, 102);
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
+    </property>
     <property name="text">
-     <string>commit</string>
+     <string>Commit</string>
     </property>
     <property name="autoDefault">
      <bool>false</bool>

@@ -39,7 +39,7 @@ QPushButton{
   <widget class="QFrame" name="user_frame">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>160</x>
      <y>230</y>
      <width>471</width>
      <height>271</height>
@@ -71,7 +71,7 @@ QPushButton{
       <widget class="QLineEdit" name="user_lineEdit">
        <property name="font">
         <font>
-         <family>Times New Roman</family>
+         <family>MS Shell Dlg 2</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -82,7 +82,7 @@ QPushButton{
 }</string>
        </property>
        <property name="echoMode">
-        <enum>QLineEdit::Password</enum>
+        <enum>QLineEdit::Normal</enum>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -93,7 +93,7 @@ QPushButton{
       <widget class="QLineEdit" name="user_lineEdit1">
        <property name="font">
         <font>
-         <family>Times New Roman</family>
+         <family>MS Shell Dlg 2</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -115,7 +115,7 @@ QPushButton{
       <widget class="QLineEdit" name="user_lineEdit2">
        <property name="font">
         <font>
-         <family>Times New Roman</family>
+         <family>MS Shell Dlg 2</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -137,7 +137,7 @@ QPushButton{
       <widget class="QLineEdit" name="user_lineEdit3">
        <property name="font">
         <font>
-         <family>Times New Roman</family>
+         <family>MS Shell Dlg 2</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -168,7 +168,10 @@ QPushButton{
       <widget class="QLabel" name="user_label">
        <property name="font">
         <font>
+         <family>MS Shell Dlg 2</family>
          <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">
@@ -231,7 +234,7 @@ QPushButton{
      <rect>
       <x>190</x>
       <y>180</y>
-      <width>251</width>
+      <width>261</width>
       <height>51</height>
      </rect>
     </property>
@@ -250,15 +253,22 @@ QPushButton{
   <widget class="QFrame" name="user_frame_3">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>60</y>
-     <width>581</width>
-     <height>121</height>
+     <x>160</x>
+     <y>40</y>
+     <width>471</width>
+     <height>141</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">	border: 2px solid black;
-	border-radius: 5px;</string>
+    <string notr="true">QFrame#user_frame_3{
+	border: 2px solid black;
+	border-radius: 5px;
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -266,6 +276,30 @@ QPushButton{
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>20</y>
+      <width>391</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Info: Remember to use long and strong passwords with special characters!!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
