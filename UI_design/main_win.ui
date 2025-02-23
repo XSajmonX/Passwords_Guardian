@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>831</width>
-    <height>608</height>
+    <width>766</width>
+    <height>579</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
-	background-color: rgb(187, 250, 255);
+background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(132, 0, 193, 255), stop:1 rgba(0, 204, 97, 255));
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -65,9 +65,9 @@ QPushButton{
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>10</y>
+      <y>30</y>
       <width>591</width>
-      <height>201</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -113,8 +113,8 @@ QPushButton{
     <widget class="QLabel" name="subtitle">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>100</y>
+       <x>60</x>
+       <y>80</y>
        <width>496</width>
        <height>86</height>
       </rect>
@@ -165,59 +165,6 @@ QLineEdit{
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="verticalLayoutWidget_3">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>10</y>
-       <width>371</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QLineEdit" name="lineEdit_login">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Times New Roman</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_pass">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Times New Roman</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QWidget" name="verticalLayoutWidget_2">
      <property name="geometry">
       <rect>
@@ -232,7 +179,6 @@ QLineEdit{
        <widget class="QLabel" name="label_login">
         <property name="font">
          <font>
-          <family>Times New Roman</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -248,7 +194,6 @@ QLineEdit{
        <widget class="QLabel" name="label_pass">
         <property name="font">
          <font>
-          <family>Times New Roman</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -261,6 +206,59 @@ QLineEdit{
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_login">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>20</y>
+       <width>369</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_pass">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>89</y>
+       <width>369</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
    </widget>
    <widget class="QPushButton" name="create_user">

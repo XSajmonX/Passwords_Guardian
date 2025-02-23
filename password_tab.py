@@ -5,6 +5,9 @@ from File_operations import read_records
 from PyQt5.QtCore import Qt
 from Record import Record
 from modify import modify_win
+from profil import profil_win
+import Table_style_css
+import Messagebox
 
 class password_manager_win(QDialog):
     def __init__(self,user,main_window):
@@ -14,7 +17,6 @@ class password_manager_win(QDialog):
         self.user = user
         try:
             self.services = read_records(user)  # Lista obiektów usług
-            self.services.reverse()
             self.initUI()
         except FileNotFoundError:
             print("brak pliku")
@@ -23,12 +25,14 @@ class password_manager_win(QDialog):
 
     def initUI(self):
         uic.loadUi("UI_design/pass_win.ui", self) # Inicjalizacjia graficznego interfejsu
+        self.table = self.findChild(QtWidgets.QTableWidget, 'table')
         # Pobranie pól tekstowych (QLineEdit)
         self.new_serv = self.findChild(QtWidgets.QLineEdit, 'new_service')
         self.new_login = self.findChild(QtWidgets.QLineEdit, 'new_login')
         self.new_pass = self.findChild(QtWidgets.QLineEdit, 'new_pass')
 
         self.new_record = self.findChild(QtWidgets.QPushButton, 'add_record')
+        self.profil = self.findChild(QtWidgets.QPushButton, 'profil')
         self.logoutButt = self.findChild(QtWidgets.QPushButton,'logout')
         self.Delete = self.findChild(QtWidgets.QPushButton, 'Delete')
         self.modify = self.findChild(QtWidgets.QPushButton, 'modify')
@@ -37,15 +41,24 @@ class password_manager_win(QDialog):
         self.logoutButt.clicked.connect(self.log_out)
         self.Delete.clicked.connect(self.delete_selected_record)
         self.modify.clicked.connect(self.modify_record)
+        self.profil.clicked.connect(self.profil_ch)
 
-
-        self.table = self.findChild(QTableWidget, 'tableWidget')
+        Table_style_css.tab_style(self.table)
         self.populate_table()
 
     def populate_table(self):
+
         self.table.setColumnCount(4)
         self.table.setRowCount(len(self.services))
         self.table.setHorizontalHeaderLabels(["Service", "Login", "Password", "Action"])
+        self.table.resizeRowsToContents()
+
+        tab = [150, 200, 500, 200]  # Szerokości dla poszczególnych kolumn
+        for i in range(self.table.columnCount()):
+            self.table.setColumnWidth(i, tab[i])  # Ustawienie szerokości dla każdej kolumny
+            self.table.horizontalHeader().setSectionResizeMode(i,QtWidgets.QHeaderView.Interactive)  # Możliwość zmiany szerokości przez użytkownika
+
+
         """ Wstawia dane do tabeli """
         for row, service in enumerate(self.services):
 
@@ -59,34 +72,29 @@ class password_manager_win(QDialog):
             hidden_pass = QTableWidgetItem("****")
             hidden_pass.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
 
-
+            self.table.setRowHeight(row, 100)
             self.table.setItem(row, 0, serv_item)
             self.table.setItem(row, 1, login_item)
             self.table.setItem(row, 2, hidden_pass)
 
 
-            self.table.setRowHeight(row, 100)
-            self.table.setColumnWidth(0, 150)  # "Usługa"
-            self.table.setColumnWidth(1, 200)  # "Login"
-            self.table.setColumnWidth(2, 500)  # "Hasło"
-            self.table.setColumnWidth(3, 200)  # "Akcje" (przyciski)
-
             # Przycisk do odkrywania hasła
-            btn_show = QPushButton("Show/Hide")
-            btn_show.setAutoDefault(False)
-            btn_show.clicked.connect(lambda _, r=row, p=hidden_pass, s=service: self.toggle_password(r, p, s))
+            self.btn_show = QPushButton("Show/Hide")
+            self.btn_show.setAutoDefault(False)
+            self.btn_show.clicked.connect(lambda _, r=row, p=hidden_pass, s=service: self.toggle_password(r, p, s))
+            Table_style_css.button_style1(self.btn_show)
 
             # Przycisk do kopiowania hasła
-            btn_copy = QPushButton("Copy")
-            btn_copy.setAutoDefault(False)
-            btn_copy.clicked.connect(lambda _, s=service: self.copy_to_clipboard(s))
-
+            self.btn_copy = QPushButton("Copy")
+            self.btn_copy.setAutoDefault(False)
+            self.btn_copy.clicked.connect(lambda _, s=service: self.copy_to_clipboard(s))
+            Table_style_css.button_style2(self.btn_copy)
             # Dodanie przycisków do tabeli
             action_widget = QWidget()
             action_layout = QVBoxLayout()
-            action_layout.addWidget(btn_show)
-            action_layout.addWidget(btn_copy)
-            action_layout.setSpacing(5)  # Dystans między przyciskami
+            action_layout.addWidget(self.btn_show)
+            action_layout.addWidget(self.btn_copy)
+            action_layout.setSpacing(0)  # Dystans między przyciskami
             action_layout.setContentsMargins(0, 0, 0, 0)  # Brak marginesów
             action_widget.setLayout(action_layout)
 
@@ -118,6 +126,7 @@ class password_manager_win(QDialog):
         pas = self.new_pass.text()
 
         if serv.strip() == "" or log.strip() == "" or pas.strip() == "":
+            Messagebox.messagebox("empty fields")
             print("empty add new pass field")
             return
 
@@ -129,8 +138,8 @@ class password_manager_win(QDialog):
         self.new_serv.setText("")
         self.new_login.setText("")
         self.new_pass.setText("")
-
-        self.services.insert(0,Record(serv,log,pas))
+        last_row = self.table.rowCount()
+        self.services.insert(last_row,Record(serv,log,pas))
         self.table.clear()
         self.populate_table()
 
@@ -139,8 +148,14 @@ class password_manager_win(QDialog):
         self.main_win.show()
 
     def delete_selected_record(self):
+
         selected_row = self.table.currentRow()  # Pobierz zaznaczony wiersz
         if selected_row >= 0:  # Sprawdź, czy coś jest zaznaczone
+            # wiadomość czy napewno usunąć
+            flag = Messagebox.yes_no()
+            if flag == 0:
+                return
+
             del self.services[selected_row]  # Usuń z listy
             self.table.removeRow(selected_row)  # Usuń z tabeli
 
@@ -157,3 +172,7 @@ class password_manager_win(QDialog):
 
             self.mod = modify_win(self.user,self.table,record,self.services,selected_row,self.populate_table)
             self.mod.exec_()
+
+    def profil_ch(self):
+        self.profil = profil_win(self.user)
+        self.profil.exec_()
