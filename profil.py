@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import *
 from File_operations import crypt, read_users_file
+import Messagebox
 
 class profil_win(QDialog):
     def __init__(self,user):
@@ -18,6 +19,7 @@ class profil_win(QDialog):
         self.email = self.findChild(QtWidgets.QLineEdit, 'user_lineEdit3')
 
         self.login.setText(self.user.login)
+        self.email.setText(self.user.email)
 
         # Pobranie przycisku (QPushButton)
         self.commit = self.findChild(QtWidgets.QPushButton, 'user_add')
@@ -34,6 +36,7 @@ class profil_win(QDialog):
         email = self.email.text()
         # Weryfikacja podanych danych
         if password_text.strip() == '' or password_rep_text.strip() == '' or login_text.strip() == '' or email.strip() == '':
+            Messagebox.messagebox("Empty fields")
             print("empty field - add user")
             return
 
@@ -41,6 +44,7 @@ class profil_win(QDialog):
         if password_text == password_rep_text:
             print('Pass ok')
         else:
+            Messagebox.messagebox("Incorrect Password")
             print("Pass1 not equal Pass2")
             return
 
@@ -57,4 +61,5 @@ class profil_win(QDialog):
         encrypt = crypt(self.user.id,login_text,password_text,email)
         save = open("Users.csv",'w')
         save.write(encrypt)
+        Messagebox.messagebox("Changes saved!")
         save.close()

@@ -2,7 +2,7 @@ from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import *
 from File_operations import crypt, read_users_file
 from Generator import generate_unique_id, gen_with_length
-
+import Messagebox
 
 class create_user_win(QDialog):
     def __init__(self):
@@ -38,12 +38,14 @@ class create_user_win(QDialog):
 
         if password_text.strip() == '' or password_rep_text.strip() == '' or login_text.strip() == '' or email.strip() == '':
             print("empty field - add user")
+            Messagebox.messagebox("Empty fields")
             return
 
         # Weryfikacja podanych danych
         if password_text == password_rep_text:
             print('Pass ok')
         else:
+            Messagebox.messagebox("Incorrect Password")
             print("Pass1 not equal Pass2")
             return
 
@@ -61,4 +63,5 @@ class create_user_win(QDialog):
         encrypt = crypt(user_id,login_text,password_text,email)
         save = open("Users.csv",'a')
         save.write(encrypt)
+        Messagebox.messagebox("New user has been created!")
         save.close()

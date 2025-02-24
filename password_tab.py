@@ -140,6 +140,7 @@ class password_manager_win(QDialog):
         self.new_pass.setText("")
         last_row = self.table.rowCount()
         self.services.insert(last_row,Record(serv,log,pas))
+        print("eeeeeeeee")
         self.table.clear()
         self.populate_table()
 

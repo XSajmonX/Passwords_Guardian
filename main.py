@@ -37,7 +37,11 @@ class MainWindow(QMainWindow):
         self.usr_create_window.exec_()
 
     def check(self):
-        users_list = read_users_file()
+        try:
+            users_list = read_users_file()
+        except:
+            Messagebox.messagebox("Lack of Users. Create a new accout!")
+            return
         # Pobranie danych
         login_text = self.edit_login.text()
         password_text = self.edit_pass.text()
@@ -62,7 +66,6 @@ class MainWindow(QMainWindow):
                 verify_code = Generator.generate_verify_code()
                 # wyślij email, wyjątek gdy brak połączenia z Internetem
                 try:
-                    pass
                     Mail.new_mail(user.email,verify_code)
                 except :
                     Messagebox.messagebox("Check your connection to Internet. I can't send an email")

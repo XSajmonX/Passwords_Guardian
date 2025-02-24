@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 def messagebox(comment):
     msg = QMessageBox()
-    msg.setIcon(QMessageBox.Critical)
+    msg.setIcon(QMessageBox.Warning)
     msg.setWindowTitle("Information")
     msg.setWindowIcon(QIcon("UI_design/padlock.ico"))
     msg.setText(comment)
