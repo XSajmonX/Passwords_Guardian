@@ -1,6 +1,0 @@
-py --> exe
-
-To polecenie należy wykonać w konsoli (NIE w środowisku wirtualnym)
-pyinstaller --noconsole --onefile --hidden-import=PyQt5 main.py
-
-plik exe uruchamia się bez obecności folderów myenv czy .venv

@@ -54,6 +54,7 @@ class create_user_win(QDialog):
             users_list = read_users_file()
             for user in users_list:
                 if login_text == user.login and password_text == user.password:
+                    Messagebox.messagebox("This user exist!")
                     return print("Uzytkownik o takich danych istnieje")
         except FileNotFoundError:
             user_id = gen_with_length(10)
